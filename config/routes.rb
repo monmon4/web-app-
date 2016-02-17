@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   resources :accounts, only: [:new, :create]
 
   resources :pdf_files, only: [:index, :new, :create, :destroy] do 
-    resources :slides, only: [:index, :show]
+    resources :notes, only: [:create , :destroy]
+    resources :slides, only: [:index, :show] do
+      resources :comment, only: [:create, :destroy]
+      #resources :like, only: [:update , :destroy]
+    end
   end
-  root "pdf_files#index"
+  root to: "pdf_files#index"
 
   resources :sessions, only: [:new, :create, :destroy]
   get "/login" => "sessions#new", as: "login"

@@ -4,7 +4,7 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.json
   def index
-    @slides = PdfFile.find(params[:pdf_file_id]).slides.paginate(page: params[:page], per_page: 10)
+    @slides = PdfFile.find(params[:pdf_file_id]).slides
   end
 
   # GET /slides/1
