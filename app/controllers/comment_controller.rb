@@ -1,7 +1,7 @@
 class CommentController < ApplicationController
 	before_action :set_slide, only: [:create]
 	def create
-		@comment= @slide.comment.new(comment_params)
+		@comment= @slide.comments.new(comment_params)
 		if @comment.save
 			redirect_to pdf_file_slide_path({id: comment_parent[:slide_id],pdf_file_id: comment_parent[:pdf_file_id]}),
 			 notice: "comment successfully added!"

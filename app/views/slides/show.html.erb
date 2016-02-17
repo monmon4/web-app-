@@ -13,23 +13,26 @@
 
 <div class="like">
 	<div>
-		<%= button_tag "Foo" %>
+		<%= button_tag "like" %>
 	</div>
 	
 </div>
 
 
-<div id="notes">
-	<%= render @pdf_file.notes %>
+
+<div id="comments">
+	<%= render @slide.comments %>
 </div>
 <div>
-	<%= form_for ([@pdf_file, @pdf_file.notes.new]) do |f| %>
+	<%= form_for ([@slide.pdf_file, @slide, @slide.comments.new]) do |f| %>
 	<div class="field">
-		<%= f.label :note %>
-		<%= f.text_area :note, size: "25x5" %>
+		<%= f.label :comment %>
+		<%= f.text_area :comment, size: "25x5" %>
 	</div>
 	<div class="actions">
 		<%= f.submit "add new comment" %>
 	</div>
 	<% end %>
 </div>
+
+
